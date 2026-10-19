@@ -1,0 +1,54 @@
+# Font needed for Powerlevel10k icons (same as the GNOME Terminal profile)
+[font]
+size = 12.0
+normal = { family = "MesloLGS NF", style = "Regular" }
+bold = { family = "MesloLGS NF", style = "Bold" }
+italic = { family = "MesloLGS NF", style = "Italic" }
+bold_italic = { family = "MesloLGS NF", style = "Bold Italic" }
+
+[window]
+padding = { x = 6, y = 4 }
+dimensions = { columns = 120, lines = 32 }
+
+[scrolling]
+history = 10000
+
+# Copy/paste stay on Ctrl+Shift+C / Ctrl+Shift+V (Alacritty defaults), so Ctrl+C still interrupts.
+# Ctrl+Shift+arrows are not bound here, so they go to zsh for word selection.
+
+# Light theme (GitHub Light)
+[colors.primary]
+background = "#ffffff"
+foreground = "#24292f"
+
+[colors.cursor]
+text = "#ffffff"
+cursor = "#24292f"
+
+[colors.selection]
+text = "CellForeground"
+background = "#b6d7ff"
+
+[colors.normal]
+black = "#24292f"
+red = "#cf222e"
+green = "#116329"
+yellow = "#4d2d00"
+blue = "#0969da"
+magenta = "#8250df"
+cyan = "#1b7c83"
+white = "#6e7781"
+
+[colors.bright]
+black = "#57606a"
+red = "#a40e26"
+green = "#1a7f37"
+yellow = "#633c01"
+blue = "#218bff"
+magenta = "#a475f9"
+cyan = "#3192aa"
+white = "#8c959f"
+
+# Start every Alacritty window inside zellij (tabs/panes/sessions)
+[shell]
+program = "zellij"  # resolved via PATH; install.sh links it into /usr/local/bin

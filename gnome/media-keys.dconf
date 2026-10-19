@@ -1,0 +1,8 @@
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/alacritty/']
+terminal=@as []
+
+[custom-keybindings/alacritty]
+binding='<Primary><Alt>t'
+command='alacritty'
+name='Alacritty'

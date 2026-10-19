@@ -1,0 +1,5 @@
+[:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+custom-command='/usr/bin/zsh'
+font='MesloLGS NF 12'
+use-custom-command=true
+use-system-font=false
