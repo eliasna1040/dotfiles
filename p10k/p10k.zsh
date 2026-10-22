@@ -398,6 +398,13 @@
     local   modified='%0F' # black foreground
     local  untracked='%0F' # black foreground
     local conflicted='%1F' # red foreground
+    # Zorin Dark has light green/yellow backgrounds and Zorin Light has deeper ones, so pick
+    # near-black or white text to match
+    if [[ $DOTFILES_THEME != light ]]; then
+      meta='%234F' clean='%234F' modified='%234F' untracked='%234F' conflicted='%88F'
+    else
+      meta='%255F' clean='%255F' modified='%255F' untracked='%255F' conflicted='%224F'
+    fi
 
     local res
 
@@ -1827,6 +1834,23 @@
   # can slow down prompt by 1-2 milliseconds, so it's better to keep it turned off unless you
   # really need it.
   typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=true
+
+  # Zorin Dark/Light (DOTFILES_THEME from ~/.zshrc). The wizard's segment text is colour 0 (black),
+  # which is too close to the segment backgrounds in both palettes: use near-black on Zorin Dark's
+  # bright segments and white on Zorin Light's deeper ones.
+  local p fg
+  if [[ $DOTFILES_THEME != light ]]; then
+    fg=234
+    typeset -g POWERLEVEL9K_DIR_FOREGROUND=234
+    typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=238
+    typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=232
+  else
+    fg=255
+  fi
+  typeset -g POWERLEVEL9K_STATUS_ERROR{,_SIGNAL,_PIPE}_FOREGROUND=$fg
+  for p in ${(k)parameters[(I)POWERLEVEL9K_*_FOREGROUND]}; do
+    [[ ${(P)p} == 0 ]] && typeset -g $p=$fg
+  done
 
   # If p10k is already loaded, reload configuration.
   # This works even with POWERLEVEL9K_DISABLE_HOT_RELOAD=true.

@@ -1,0 +1,32 @@
+# Zorin Dark (based on the ZorinBlue-Dark desktop theme, accent = Zorin blue)
+[colors.primary]
+background = "#161c1f"
+foreground = "#d6e6ef"
+
+[colors.cursor]
+text = "#161c1f"
+cursor = "#15a6f0"
+
+[colors.selection]
+text = "CellForeground"
+background = "#234a5e"
+
+[colors.normal]
+black = "#2d3940"
+red = "#fb7c7c"
+green = "#4cd9a4"
+yellow = "#f6be1a"
+blue = "#15a6f0"
+magenta = "#b38be8"
+cyan = "#36c5d0"
+white = "#a9bcc6"
+
+[colors.bright]
+black = "#6f8896"
+red = "#fdb4b4"
+green = "#6ee1b6"
+yellow = "#ffd75e"
+blue = "#5cc0f5"
+magenta = "#d8c4f1"
+cyan = "#7fe0e8"
+white = "#ffffff"

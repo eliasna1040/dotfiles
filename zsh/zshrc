@@ -40,14 +40,23 @@ for km in emacs shift-select; do
   bindkey -M $km '^[[1;4C' shift-select::forward-word
 done
 
-# Light colours for fzf, also used by the fzf-tab popup
-export FZF_DEFAULT_OPTS='--color=light,bg+:#eaeef2,hl:#0969da,hl+:#0969da,pointer:#cf222e,marker:#1a7f37'
+# Colour theme (dark or light), shared with ~/.p10k.zsh; switch with `theme dark|light`
+export DOTFILES_THEME
+[[ -r ~/.config/dotfiles/theme ]] && DOTFILES_THEME=$(<~/.config/dotfiles/theme)
+[[ $DOTFILES_THEME == light ]] || DOTFILES_THEME=dark
+
+# fzf colours, also used by the fzf-tab popup
+if [[ $DOTFILES_THEME == light ]]; then
+  export FZF_DEFAULT_OPTS='--color=light,bg+:#e3eef7,hl:#0b7fc4,hl+:#0b7fc4,pointer:#d93636,marker:#12875c,prompt:#0b7fc4,info:#7e92a5'
+else
+  export FZF_DEFAULT_OPTS='--color=dark,bg+:#22313a,hl:#15a6f0,hl+:#5cc0f5,pointer:#fb7c7c,marker:#4cd9a4,prompt:#15a6f0,info:#6f8896'
+fi
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # Tab completion as a searchable fzf popup (must load after compinit, before the two below)
 source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 # Grey history suggestions while typing; accept with Right arrow or End
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#8c959f'
+[[ $DOTFILES_THEME == light ]] && ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#8999aa' || ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5f7581'
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Colour commands as you type (should stay the last plugin loaded)
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -69,6 +78,18 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 
 # SQL Server tools (sqlcmd, bcp)
 export PATH="$PATH:/opt/mssql-tools18/bin"
+
+# Switch Alacritty, zellij, the prompt and plugins between Zorin Dark and Zorin Light
+theme() {
+  if [[ $1 != (dark|light) ]]; then
+    print "usage: theme dark|light (current: $DOTFILES_THEME)"
+    return 1
+  fi
+  mkdir -p ~/.config/dotfiles && print $1 > ~/.config/dotfiles/theme
+  ln -sfn ~/.config/alacritty/themes/zorin-$1.toml ~/.config/alacritty/theme.toml
+  touch ~/.config/alacritty/alacritty.toml  # nudge Alacritty's live reload
+  exec zsh
+}
 
 # Start Claude Code in ~/git when launched from $HOME
 claude() {

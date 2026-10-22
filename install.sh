@@ -57,9 +57,19 @@ link "$DOTFILES/zsh/zshrc"                        ~/.zshrc
 link "$DOTFILES/zsh/splash/splash.zsh"            ~/.zsh/splash.zsh
 link "$DOTFILES/p10k/p10k.zsh"                    ~/.p10k.zsh
 link "$DOTFILES/alacritty/alacritty.toml"         ~/.config/alacritty/alacritty.toml
+link "$DOTFILES/alacritty/themes"                 ~/.config/alacritty/themes
 link "$DOTFILES/zellij/config.kdl"                ~/.config/zellij/config.kdl
-link "$DOTFILES/zellij/themes/github-light.kdl"   ~/.config/zellij/themes/github-light.kdl
+link "$DOTFILES/zellij/themes/zorin-dark.kdl"     ~/.config/zellij/themes/zorin-dark.kdl
+link "$DOTFILES/zellij/themes/zorin-light.kdl"    ~/.config/zellij/themes/zorin-light.kdl
 link "$DOTFILES/git/gitconfig"                    ~/.gitconfig
+
+say "Selecting colour theme (Zorin Dark unless 'light' was chosen before; switch later with: theme dark|light)"
+THEME="$(cat ~/.config/dotfiles/theme 2>/dev/null || true)"
+[[ "$THEME" == light ]] || THEME=dark
+mkdir -p ~/.config/dotfiles
+echo "$THEME" > ~/.config/dotfiles/theme
+ln -sfn ~/.config/alacritty/themes/zorin-$THEME.toml ~/.config/alacritty/theme.toml
+echo "  $THEME"
 
 if [[ ! -f ~/.zshenv ]]; then
   cp "$DOTFILES/zsh/zshenv.example" ~/.zshenv

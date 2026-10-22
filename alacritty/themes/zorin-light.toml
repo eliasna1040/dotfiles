@@ -1,0 +1,32 @@
+# Zorin Light (based on the ZorinBlue-Light desktop theme, accent = Zorin blue)
+[colors.primary]
+background = "#fafbfd"
+foreground = "#123354"
+
+[colors.cursor]
+text = "#ffffff"
+cursor = "#15a6f0"
+
+[colors.selection]
+text = "CellForeground"
+background = "#c4e6fa"
+
+[colors.normal]
+black = "#123354"
+red = "#d93636"
+green = "#12875c"
+yellow = "#a37508"
+blue = "#0b7fc4"
+magenta = "#8150c4"
+cyan = "#11899a"
+white = "#7e92a5"
+
+[colors.bright]
+black = "#5a7088"
+red = "#fa4444"
+green = "#2ac88d"
+yellow = "#d9a106"
+blue = "#15a6f0"
+magenta = "#9c68da"
+cyan = "#1bb5c9"
+white = "#a8b6c4"

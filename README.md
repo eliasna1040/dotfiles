@@ -1,6 +1,6 @@
 # dotfiles
 
-My terminal setup for Zorin OS (Ubuntu-based): **zsh + Powerlevel10k**, **Alacritty + zellij**, a GitHub Light colour theme everywhere, and the GNOME shortcuts that tie it together.
+My terminal setup for Zorin OS (Ubuntu-based): **zsh + Powerlevel10k**, **Alacritty + zellij**, a Zorin OS-matched dark colour theme everywhere (light one command away), and the GNOME shortcuts that tie it together.
 
 ## Fresh install on Zorin OS
 
@@ -20,6 +20,23 @@ Then:
 4. Optional: `nvm install --lts` for Node, then install Claude Code with `curl -fsSL https://claude.ai/install.sh | bash`.
 
 `install.sh` is safe to re-run. Any existing file it would replace is moved to `<file>.bak.<timestamp>`.
+
+## Dark / light theme
+
+Everything defaults to **Zorin Dark**, a palette built from the ZorinBlue-Dark/Light desktop themes (Zorin blue `#15a6f0` as the accent) so the terminal matches the rest of the desktop. To switch:
+
+```bash
+theme light   # or: theme dark
+```
+
+This saves the choice to `~/.config/dotfiles/theme`, repoints `~/.config/alacritty/theme.toml` (Alacritty reloads it live) and restarts zsh so the prompt, fzf-tab and autosuggestions pick it up. New Alacritty windows start zellij with the matching theme; zellij sessions that are already running keep their theme until restarted. Other open Alacritty windows change colour immediately, but their shells keep the old prompt colours until you run `exec zsh` in them.
+
+| Piece | Dark | Light |
+|---|---|---|
+| Alacritty | `alacritty/themes/zorin-dark.toml` | `alacritty/themes/zorin-light.toml` |
+| zellij | `zellij/themes/zorin-dark.kdl` | `zellij/themes/zorin-light.kdl` |
+| Powerlevel10k | rainbow segments with dark text | rainbow segments with white text (both set at the end of `p10k/p10k.zsh`) |
+| fzf / fzf-tab, autosuggestions | set in `zsh/zshrc` | set in `zsh/zshrc` |
 
 ## What the script does
 
@@ -60,7 +77,8 @@ for d in ~/powerlevel10k ~/.zsh/plugins/*; do git -C "$d" pull --ff-only; done
 | `zsh/zshenv.example` | copied once to `~/.zshenv` (secrets, chmod 600) |
 | `p10k/p10k.zsh` | `~/.p10k.zsh` (re-run `p10k configure` to change the prompt) |
 | `alacritty/alacritty.toml` | `~/.config/alacritty/alacritty.toml` |
-| `zellij/config.kdl`, `zellij/themes/github-light.kdl` | `~/.config/zellij/` |
+| `alacritty/themes/` | `~/.config/alacritty/themes/` (`theme.toml` there is a symlink to the active one) |
+| `zellij/config.kdl`, `zellij/themes/zorin-{dark,light}.kdl` | `~/.config/zellij/` |
 | `git/gitconfig` | `~/.gitconfig` (uses `gh` as the credential helper) |
 | `gnome/*.dconf` | loaded with `dconf load` |
 | `fonts/*.ttf` | copied to `~/.local/share/fonts` |

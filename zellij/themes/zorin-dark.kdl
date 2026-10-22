@@ -1,0 +1,122 @@
+// Zorin Dark, matching the Alacritty palette and the Powerlevel10k rainbow segments
+// (active tab/frame use Zorin blue, like the p10k directory segment).
+themes {
+    zorin-dark {
+        text_unselected {
+            base 214 230 239
+            background 30 36 40
+            emphasis_0 250 164 131
+            emphasis_1 21 166 240
+            emphasis_2 76 217 164
+            emphasis_3 179 139 232
+        }
+        text_selected {
+            base 214 230 239
+            background 45 57 64
+            emphasis_0 250 164 131
+            emphasis_1 21 166 240
+            emphasis_2 76 217 164
+            emphasis_3 179 139 232
+        }
+        ribbon_selected {
+            base 22 28 31
+            background 21 166 240
+            emphasis_0 118 45 10
+            emphasis_1 22 28 31
+            emphasis_2 4 60 40
+            emphasis_3 22 28 31
+        }
+        ribbon_unselected {
+            base 214 230 239
+            background 45 57 64
+            emphasis_0 250 164 131
+            emphasis_1 21 166 240
+            emphasis_2 76 217 164
+            emphasis_3 179 139 232
+        }
+        table_title {
+            base 21 166 240
+            background 0
+            emphasis_0 250 164 131
+            emphasis_1 21 166 240
+            emphasis_2 76 217 164
+            emphasis_3 179 139 232
+        }
+        table_cell_selected {
+            base 214 230 239
+            background 45 57 64
+            emphasis_0 250 164 131
+            emphasis_1 21 166 240
+            emphasis_2 76 217 164
+            emphasis_3 179 139 232
+        }
+        table_cell_unselected {
+            base 214 230 239
+            background 30 36 40
+            emphasis_0 250 164 131
+            emphasis_1 21 166 240
+            emphasis_2 76 217 164
+            emphasis_3 179 139 232
+        }
+        list_selected {
+            base 214 230 239
+            background 45 57 64
+            emphasis_0 250 164 131
+            emphasis_1 21 166 240
+            emphasis_2 76 217 164
+            emphasis_3 179 139 232
+        }
+        list_unselected {
+            base 214 230 239
+            background 30 36 40
+            emphasis_0 250 164 131
+            emphasis_1 21 166 240
+            emphasis_2 76 217 164
+            emphasis_3 179 139 232
+        }
+        frame_selected {
+            base 21 166 240
+            background 0
+            emphasis_0 250 164 131
+            emphasis_1 76 217 164
+            emphasis_2 179 139 232
+            emphasis_3 0
+        }
+        frame_highlight {
+            base 250 164 131
+            background 0
+            emphasis_0 251 124 124
+            emphasis_1 179 139 232
+            emphasis_2 250 164 131
+            emphasis_3 250 164 131
+        }
+        exit_code_success {
+            base 76 217 164
+            background 0
+            emphasis_0 21 166 240
+            emphasis_1 30 36 40
+            emphasis_2 179 139 232
+            emphasis_3 21 166 240
+        }
+        exit_code_error {
+            base 251 124 124
+            background 0
+            emphasis_0 250 164 131
+            emphasis_1 0
+            emphasis_2 0
+            emphasis_3 0
+        }
+        multiplayer_user_colors {
+            player_1 179 139 232
+            player_2 21 166 240
+            player_3 0
+            player_4 250 164 131
+            player_5 54 197 208
+            player_6 0
+            player_7 251 124 124
+            player_8 0
+            player_9 0
+            player_10 0
+        }
+    }
+}

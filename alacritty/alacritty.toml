@@ -1,3 +1,7 @@
+# Colours come from themes/zorin-{dark,light}.toml via this symlink; switch with `theme dark|light` in zsh.
+# (Top-level import must stay above the first [table].)
+import = ["~/.config/alacritty/theme.toml"]
+
 # Font needed for Powerlevel10k icons (same as the GNOME Terminal profile)
 [font]
 size = 12.0
@@ -16,39 +20,8 @@ history = 10000
 # Copy/paste stay on Ctrl+Shift+C / Ctrl+Shift+V (Alacritty defaults), so Ctrl+C still interrupts.
 # Ctrl+Shift+arrows are not bound here, so they go to zsh for word selection.
 
-# Light theme (GitHub Light)
-[colors.primary]
-background = "#ffffff"
-foreground = "#24292f"
-
-[colors.cursor]
-text = "#ffffff"
-cursor = "#24292f"
-
-[colors.selection]
-text = "CellForeground"
-background = "#b6d7ff"
-
-[colors.normal]
-black = "#24292f"
-red = "#cf222e"
-green = "#116329"
-yellow = "#4d2d00"
-blue = "#0969da"
-magenta = "#8250df"
-cyan = "#1b7c83"
-white = "#6e7781"
-
-[colors.bright]
-black = "#57606a"
-red = "#a40e26"
-green = "#1a7f37"
-yellow = "#633c01"
-blue = "#218bff"
-magenta = "#a475f9"
-cyan = "#3192aa"
-white = "#8c959f"
-
-# Start every Alacritty window inside zellij (tabs/panes/sessions)
+# Start every Alacritty window inside zellij (tabs/panes/sessions), in the colour theme picked with `theme`.
+# zellij is resolved via PATH; install.sh puts it in /usr/local/bin
 [shell]
-program = "zellij"  # resolved via PATH; install.sh links it into /usr/local/bin
+program = "/bin/sh"
+args = ["-c", "[ \"$(cat ~/.config/dotfiles/theme 2>/dev/null)\" = light ] && t=light || t=dark; exec zellij options --theme zorin-$t"]
